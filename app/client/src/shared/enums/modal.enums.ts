@@ -7,6 +7,7 @@ export enum Modal {
   CLUB,
 
   ROOM_CREATOR,
+  ROOM_PASSWORD,
 }
 
 export enum ModalNavigatorTab {

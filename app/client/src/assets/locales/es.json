@@ -54,7 +54,12 @@
       "layout": "Distribución",
       "title": "Título",
       "description": "Descripción",
+      "password": "Contraseña",
       "create_room": "Crear sala"
     }
+  },
+  "room_password": {
+    "title": "Contraseña de la sala",
+    "join": "Entrar"
   }
 }

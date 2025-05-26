@@ -109,6 +109,9 @@ export const RoomPreviewComponent: React.FC<Props> = ({
           gap={6}
         >
           <TextComponent text={`${room.users}/${room.maxUsers}`} color={0} />
+          {room.hasPassword ? (
+            <TextComponent text="🔒" color={0xb73d22} />
+          ) : null}
           <ButtonComponent
             size={{
               height: 14,

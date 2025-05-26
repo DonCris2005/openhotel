@@ -57,7 +57,7 @@ export const RoomsListComponent: React.FC<Props> = ({
         direction="y"
         gap={3}
       >
-        {rooms.map(({ id, title, users, maxUsers, favorite }, index) => (
+        {rooms.map(({ id, title, users, maxUsers, favorite, hasPassword }, index) => (
           <NavigatorRoomButtonComponent
             key={id}
             size={{
@@ -68,6 +68,7 @@ export const RoomsListComponent: React.FC<Props> = ({
             users={users}
             maxUsers={maxUsers}
             favorite={favorite}
+            locked={hasPassword}
             onPointerDown={$onPointerDown(id)}
             onClickFavorite={() => onClickFavorite(id)}
             onClickGo={() => onClickGo(id)}

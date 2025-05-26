@@ -55,7 +55,13 @@
       "layout": "Layout",
       "title": "Title",
       "description": "Description",
-      "create_room": "Create room"
-    }
+    "password": "Password",
+    "create_room": "Create room"
   }
+  },
+  "room_password": {
+    "title": "Enter password",
+    "join": "Join"
+  }
+}
 }

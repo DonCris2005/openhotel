@@ -106,6 +106,7 @@ export const users = () => {
 
       emit(ProxyEvent.PRE_JOIN_ROOM, {
         room,
+        hasPassword: Boolean((foundRoom as PrivateRoomMutable).getObject().password),
       });
     };
 
