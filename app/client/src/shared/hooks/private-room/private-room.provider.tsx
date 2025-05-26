@@ -1,7 +1,12 @@
 import React, { ReactNode, useCallback, useEffect } from "react";
 import { PrivateRoomContext } from "shared/hooks/private-room/private-room.context";
-import { Direction, Event, Route } from "shared/enums";
-import { useModal, useProxy, useRouter, useRoomPasswordModalStore } from "shared/hooks";
+import { Direction, Event, Route, Modal } from "shared/enums";
+import {
+  useModal,
+  useProxy,
+  useRouter,
+  useRoomPasswordModalStore,
+} from "shared/hooks";
 import { usePrivateRoomStore } from "./private-room.store";
 import { Point3d, PrivateRoom, RoomFurniture, User } from "shared/types";
 

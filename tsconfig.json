@@ -7,10 +7,11 @@
     "sourceMap": false,
     "noUnusedLocals": true,
     "lib": ["ES2023", "dom"],
-    "baseUrl": "./src",
-    "rootDir": "./src",
+    "baseUrl": ".",
+    "rootDir": ".",
     "jsx": "react",
     "allowImportingTsExtensions": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "noEmit": true
   }
 }
