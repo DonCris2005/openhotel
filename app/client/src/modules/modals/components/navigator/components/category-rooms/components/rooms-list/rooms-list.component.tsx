@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useRef, useCallback } from "react";
 import {
   NavigatorRoomButtonComponent,
   ScrollComponent,
@@ -31,6 +31,25 @@ export const RoomsListComponent: React.FC<Props> = ({
 }) => {
   const { t } = useTranslation();
 
+  const lastClick = useRef<{ id: string; time: number }>({ id: null, time: 0 });
+
+  const $onPointerDown = useCallback(
+    (roomId: string) => () => {
+      const now = Date.now();
+
+      if (
+        lastClick.current.id === roomId &&
+        now - lastClick.current.time < 500
+      ) {
+        onClickGo(roomId);
+      }
+
+      lastClick.current = { id: roomId, time: now };
+      onClick(roomId);
+    },
+    [onClick, onClickGo],
+  );
+
   const content = useMemo(
     () => (
       <FlexContainerComponent
@@ -49,14 +68,14 @@ export const RoomsListComponent: React.FC<Props> = ({
             users={users}
             maxUsers={maxUsers}
             favorite={favorite}
-            onPointerDown={() => onClick(id)}
+            onPointerDown={$onPointerDown(id)}
             onClickFavorite={() => onClickFavorite(id)}
             onClickGo={() => onClickGo(id)}
           />
         ))}
       </FlexContainerComponent>
     ),
-    [rooms, size, onClickGo, onClick, onClickFavorite],
+    [rooms, size, onClickGo, onClickFavorite, $onPointerDown],
   );
 
   if (!rooms.length)
