@@ -12,6 +12,7 @@ export * from "./safe-window";
 export * from "./sound";
 export * from "./item-place-preview";
 export * from "./info";
+export * from "./inventory-notification";
 export * from "./changelog";
 export * from "./language";
 export * from "./api";

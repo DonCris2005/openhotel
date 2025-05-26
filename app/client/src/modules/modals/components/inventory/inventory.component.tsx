@@ -12,7 +12,7 @@ import {
   useDragContainer,
 } from "@openhotel/pixi-components";
 import { Modal, ModalInventoryTab, SpriteSheetEnum } from "shared/enums";
-import { useModal } from "shared/hooks";
+import { useModal, useInventoryNotification } from "shared/hooks";
 import { ModalInventoryCategoryProps } from "shared/types";
 import { TextComponent } from "shared/components";
 import { MODAL_SIZE_MAP } from "shared/consts";
@@ -33,6 +33,7 @@ const MODAL_SIZE = MODAL_SIZE_MAP[Modal.INVENTORY];
 export const InventoryComponent: React.FC = () => {
   const { t } = useTranslation();
   const { closeModal } = useModal();
+  const { reset } = useInventoryNotification();
   const { setDragPolygon } = useDragContainer();
 
   const [selectedCategory, setSelectedCategory] = useState<ModalInventoryTab>(
@@ -57,6 +58,10 @@ export const InventoryComponent: React.FC = () => {
   useEffect(() => {
     setDragPolygon?.([0, 0, MODAL_SIZE.width, 0, MODAL_SIZE.width, 15, 0, 15]);
   }, [setDragPolygon]);
+
+  useEffect(() => {
+    reset();
+  }, [reset]);
 
   const SelectedCategoryContent = useMemo(
     () => inventoryCategoryMap[selectedCategory],
