@@ -16,6 +16,7 @@ import {
   ModalProvider,
   SoundProvider,
   TasksProvider,
+  InventoryNotificationProvider,
 } from "../../shared/hooks";
 import {
   CoreLoaderComponent,
@@ -50,6 +51,7 @@ export const FakeProviders: React.FC<Props> = ({ children }) => {
       FakeRouterProvider,
       DragContainerProvider,
       ModalProvider,
+      InventoryNotificationProvider,
       // InfoProvider,
       //|\\|//|\\|//|\\|//|\\|//|\\|//|\\|//|\\|
       //|\\|//|\\|//|\\|//|\\|//|\\|//|\\|//|\\|
