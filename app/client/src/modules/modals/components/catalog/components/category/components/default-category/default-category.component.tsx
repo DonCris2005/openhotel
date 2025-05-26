@@ -18,7 +18,13 @@ import {
   TextComponent,
 } from "shared/components";
 import { CatalogCategoryData } from "shared/types";
-import { useApi, useFurniture, SoundsEnum, useSound } from "shared/hooks";
+import {
+  useApi,
+  useFurniture,
+  SoundsEnum,
+  useSound,
+  useInventoryNotification,
+} from "shared/hooks";
 import { useTranslation } from "react-i18next";
 import { FURNITURE_ICON_BOX_SIZE, SCROLL_BAR_WIDTH } from "shared/consts";
 import { CATALOG_DEFAULT_CATEGORY_ITEM_LIST_SIZE } from "shared/consts/catalog.consts";
@@ -37,6 +43,7 @@ export const DefaultCategoryComponent: React.FC<Props> = ({
   const { fetch } = useApi();
   const { get } = useFurniture();
   const { play } = useSound();
+  const { increment } = useInventoryNotification();
 
   const { t } = useTranslation();
   const [selectedFurnitureId, setSelectedFurnitureId] = useState<string>(null);
@@ -109,9 +116,12 @@ export const DefaultCategoryComponent: React.FC<Props> = ({
       false,
       "POST",
     ).then(({ transaction }) => {
-      if (transaction?.success) play(SoundsEnum.BUY);
+      if (transaction?.success) {
+        play(SoundsEnum.BUY);
+        increment();
+      }
     });
-  }, [fetch, selectedFurnitureData, play]);
+  }, [fetch, selectedFurnitureData, play, increment]);
 
   const renderPreview = useMemo(() => {
     if (!selectedFurnitureData)

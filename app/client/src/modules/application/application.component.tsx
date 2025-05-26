@@ -20,6 +20,7 @@ import {
   SoundProvider,
   ItemPlacePreviewProvider,
   InfoProvider,
+  InventoryNotificationProvider,
   ChangelogProvider,
   LanguageProvider,
   ApiProvider,
@@ -50,6 +51,7 @@ export const ApplicationComponent = () => {
       RouterProvider,
       ModalProvider,
       InfoProvider,
+      InventoryNotificationProvider,
       //|\\|//|\\|//|\\|//|\\|//|\\|//|\\|//|\\|
       //|\\|//|\\|//|\\|//|\\|//|\\|//|\\|//|\\|
       PrivateRoomProvider,
