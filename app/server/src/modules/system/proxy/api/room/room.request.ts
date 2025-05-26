@@ -46,10 +46,11 @@ export const roomPutRequest: ProxyRequestType = {
   pathname: "",
   method: RequestMethod.PUT,
   func: async ({ data, user }) => {
-    const { layoutId, title, description } = data as unknown as {
+    const { layoutId, title, description, password } = data as unknown as {
       layoutId: number;
       title: string;
       description: string | null;
+      password?: string | null;
     };
     if (!title || isNaN(layoutId)) return { status: 400 };
 
@@ -67,6 +68,7 @@ export const roomPutRequest: ProxyRequestType = {
       furniture: [],
       layoutIndex: layoutId,
       maxUsers: 10,
+      password: password ? password.substring(0, 32) : null,
     };
 
     await System.game.rooms.add(roomData);

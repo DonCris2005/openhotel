@@ -16,6 +16,7 @@ export * from "./inventory-notification";
 export * from "./changelog";
 export * from "./language";
 export * from "./api";
+export * from "./room-password-modal";
 
 export * from "./use-character";
 export * from "./use-api-path";

@@ -38,10 +38,12 @@ export const RoomCreatorComponent: React.FC = () => {
     id: number;
     title: string;
     description: string;
+    password: string;
   }>({
     id: null,
     title: null,
     description: null,
+    password: "",
   });
 
   useEffect(() => {
@@ -76,6 +78,7 @@ export const RoomCreatorComponent: React.FC = () => {
         layoutId: formRef.current.id,
         title: formRef.current.title,
         description: formRef.current.description,
+        password: formRef.current.password,
       },
       false,
       "PUT",
@@ -95,6 +98,9 @@ export const RoomCreatorComponent: React.FC = () => {
   }, []);
   const onChangeDescription = useCallback((value: KeyboardEventExtended) => {
     formRef.current.description = value.target.value;
+  }, []);
+  const onChangePassword = useCallback((value: KeyboardEventExtended) => {
+    formRef.current.password = value.target.value;
   }, []);
 
   return (
@@ -198,6 +204,21 @@ export const RoomCreatorComponent: React.FC = () => {
                 placeholder={t("room_creator.form.description")}
                 onChange={onChangeDescription}
                 maxLength={64}
+              />
+            </TitleComponent>
+            <TitleComponent
+              title={t("room_creator.form.password")}
+              position={{
+                y: 14 * 5,
+              }}
+            >
+              <InputComponent
+                size={{
+                  width: formWidth,
+                }}
+                placeholder={t("room_creator.form.password")}
+                onChange={onChangePassword}
+                maxLength={32}
               />
             </TitleComponent>
             {/*<TitleComponent*/}

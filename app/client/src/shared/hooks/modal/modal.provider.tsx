@@ -27,6 +27,7 @@ import {
   NavigatorComponent,
   PurseComponent,
   RoomCreatorComponent,
+  RoomPasswordComponent,
 } from "modules/modals";
 
 type ModalProps = {
@@ -143,6 +144,7 @@ export const ModalProvider: React.FunctionComponent<ModalProps> = ({
       [Modal.PURSE]: PurseComponent,
       [Modal.CLUB]: ClubComponent,
       [Modal.ROOM_CREATOR]: RoomCreatorComponent,
+      [Modal.ROOM_PASSWORD]: RoomPasswordComponent,
     }),
     [],
   );

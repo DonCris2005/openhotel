@@ -21,6 +21,8 @@ type Props = {
   maxUsers: number;
   size: Size;
 
+  locked?: boolean;
+
   onClickFavorite: () => void;
   onClickGo: () => void;
 } & ContainerProps;
@@ -32,6 +34,7 @@ export const NavigatorRoomButtonComponent: React.FC<Props> = ({
   favorite,
   users,
   maxUsers,
+  locked,
   size,
 
   onClickFavorite,
@@ -86,6 +89,9 @@ export const NavigatorRoomButtonComponent: React.FC<Props> = ({
               y: 1,
             }}
           />
+          {locked ? (
+            <TextComponent text="🔒" position={{ x: size.width - usersWidth - 15 }} />
+          ) : null}
         </ContainerComponent>
         <ContainerComponent
           position={{
@@ -148,6 +154,7 @@ export const NavigatorRoomButtonComponent: React.FC<Props> = ({
       containerProps,
 
       usersColor,
+      locked,
     ],
   );
 };

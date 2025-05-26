@@ -55,6 +55,7 @@ export type NavigatorRoom = {
   ownerUsername: string;
   users: number;
   maxUsers: number;
+  hasPassword?: boolean;
   favorite: boolean;
   layoutIndex: number;
 };

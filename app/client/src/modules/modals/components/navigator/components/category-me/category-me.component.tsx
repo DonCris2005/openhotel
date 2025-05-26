@@ -60,6 +60,7 @@ export const CategoryMeComponent: React.FC<Props> = ({ size }) => {
           maxUsers: room.maxUsers,
           favorite: false,
           layoutIndex: room.layoutIndex,
+          hasPassword: room.hasPassword,
         })),
       );
     });

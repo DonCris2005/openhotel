@@ -1,7 +1,7 @@
 import React, { ReactNode, useCallback, useEffect } from "react";
 import { PrivateRoomContext } from "shared/hooks/private-room/private-room.context";
 import { Direction, Event, Route } from "shared/enums";
-import { useModal, useProxy, useRouter } from "shared/hooks";
+import { useModal, useProxy, useRouter, useRoomPasswordModalStore } from "shared/hooks";
 import { usePrivateRoomStore } from "./private-room.store";
 import { Point3d, PrivateRoom, RoomFurniture, User } from "shared/types";
 
@@ -32,13 +32,22 @@ export const PrivateRoomProvider: React.FunctionComponent<PrivateRoomProps> = ({
   } = usePrivateRoomStore();
 
   const { on, emit } = useProxy();
-  const { closeAll } = useModal();
+  const { closeAll, openModal } = useModal();
+  const { setRoomId } = useRoomPasswordModalStore();
   const { navigate } = useRouter();
 
   useEffect(() => {
-    const removeOnPreJoinRoom = on(Event.PRE_JOIN_ROOM, ({ room }) => {
-      emit(Event.JOIN_ROOM, { roomId: room.id });
-    });
+    const removeOnPreJoinRoom = on(
+      Event.PRE_JOIN_ROOM,
+      ({ room, hasPassword }) => {
+        if (hasPassword) {
+          setRoomId(room.id);
+          openModal(Modal.ROOM_PASSWORD);
+        } else {
+          emit(Event.JOIN_ROOM, { roomId: room.id });
+        }
+      },
+    );
     const removeOnJoinRoom = on(
       Event.LOAD_ROOM,
       ({ room }: { room: PrivateRoom }) => {

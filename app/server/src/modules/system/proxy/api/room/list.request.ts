@@ -48,9 +48,10 @@ export const listRequest: ProxyRequestType = {
                 ownerUsername: await room.getOwnerUsername(),
                 title: room.getTitle(),
                 description: room.getDescription(),
-                userCount: room.getUsers().length,
-                maxUsers: room.getObject().maxUsers,
-                layoutIndex: room.getObject().layoutIndex,
+              userCount: room.getUsers().length,
+              maxUsers: room.getObject().maxUsers,
+              layoutIndex: room.getObject().layoutIndex,
+              hasPassword: Boolean(room.getObject().password),
               })),
           )
         ).sort((roomA, roomB) => (roomA.title > roomB.title ? 1 : -1));
