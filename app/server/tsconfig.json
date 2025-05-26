@@ -7,9 +7,10 @@
     "sourceMap": false,
     "noUnusedLocals": true,
     "lib": ["ES2022", "dom"],
-    "baseUrl": "./src/",
-    "rootDir": "./src",
+    "baseUrl": ".",
+    "rootDir": ".",
     "allowImportingTsExtensions": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "noEmit": true
   }
 }
