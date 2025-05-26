@@ -19,8 +19,8 @@ import {
   FurnitureProvider,
   SoundProvider,
   ItemPlacePreviewProvider,
-  InfoProvider,
   InventoryNotificationProvider,
+  InfoProvider,
   ChangelogProvider,
   LanguageProvider,
   ApiProvider,
@@ -48,10 +48,10 @@ export const ApplicationComponent = () => {
       CameraProvider, // Before 'ModalProvider' so 'ModalProvider' can use 'useCamera'
       SoundProvider,
       ItemPlacePreviewProvider,
+      InventoryNotificationProvider,
       RouterProvider,
       ModalProvider,
       InfoProvider,
-      InventoryNotificationProvider,
       //|\\|//|\\|//|\\|//|\\|//|\\|//|\\|//|\\|
       //|\\|//|\\|//|\\|//|\\|//|\\|//|\\|//|\\|
       PrivateRoomProvider,
