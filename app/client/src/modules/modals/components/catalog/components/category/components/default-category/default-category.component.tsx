@@ -88,9 +88,11 @@ export const DefaultCategoryComponent: React.FC<Props> = ({
       (f) => f.id === selectedFurnitureId,
     );
 
-    return selectedFurnitureId
+    const data = get(selectedFurnitureId);
+
+    return selectedFurnitureId && data
       ? {
-          ...get(selectedFurnitureId),
+          ...data,
           price: furniture?.price ?? 0,
         }
       : null;
