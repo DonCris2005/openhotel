@@ -79,19 +79,19 @@ export const NavigatorRoomButtonComponent: React.FC<Props> = ({
             cursor={Cursor.POINTER}
             onPointerDown={onClickFavorite}
           />
+          {locked ? (
+            <TextComponent text="🔒" color={0xb73d22} position={{ x: 15, y: 1 }} />
+          ) : null}
           <TextComponent
             text={title}
             color={0x1}
-            maxWidth={size.width - usersWidth - 28}
+            maxWidth={size.width - usersWidth - 28 - (locked ? 11 : 0)}
             wrap={false}
             position={{
-              x: 15,
+              x: locked ? 26 : 15,
               y: 1,
             }}
           />
-          {locked ? (
-            <TextComponent text="🔒" position={{ x: size.width - usersWidth - 15 }} />
-          ) : null}
         </ContainerComponent>
         <ContainerComponent
           position={{
