@@ -19,3 +19,9 @@ export type CatalogCategory = {
 export type Catalog = {
   categories: CatalogCategory[];
 };
+
+export type CatalogBuyResponse = {
+  transaction: {
+    success: boolean;
+  };
+};
