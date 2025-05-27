@@ -17,7 +17,7 @@ import {
   ItemListComponent,
   TextComponent,
 } from "shared/components";
-import { CatalogCategoryData } from "shared/types";
+import { CatalogBuyResponse, CatalogCategoryData } from "shared/types";
 import {
   useApi,
   useFurniture,
@@ -117,7 +117,7 @@ export const DefaultCategoryComponent: React.FC<Props> = ({
       { furnitureId: selectedFurnitureData.furnitureId },
       false,
       "POST",
-    ).then(({ transaction }) => {
+    ).then(({ transaction }: CatalogBuyResponse) => {
       if (transaction?.success) {
         play(SoundsEnum.BUY);
         increment();
