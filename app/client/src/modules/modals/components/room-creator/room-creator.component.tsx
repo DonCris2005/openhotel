@@ -209,7 +209,7 @@ export const RoomCreatorComponent: React.FC = () => {
             <TitleComponent
               title={t("room_creator.form.password")}
               position={{
-                y: 14 * 5,
+                y: 14 * 6,
               }}
             >
               <InputComponent
